@@ -1,0 +1,16 @@
+{
+  "pages":[
+    "pages/canvas/canvas",        
+    "pages/list/list",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#000",
+    "navigationBarTitleText": "oWong",
+    "navigationBarTextStyle":"white",
+    "backgroundColor": "#ffffff",
+    "enablePullDownRefresh": true
+  }
+
+}
