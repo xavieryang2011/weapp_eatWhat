@@ -4,17 +4,17 @@
 	</view>
 
 	<view class="list-btn">
-		<button bindtap="gotoLottery" type="primary">去抽奖</button>
+		<button bindtap="gotoLottery" type="primary">去吃饭</button>
 	</view>
 
 	<view class="header-name">
 		{{userInfo.nickName}}，
-		<block wx:if="{{awardsList.length > 0}}">恭喜您获得了以下奖品：</block>
-		<block wx:else>您还中奖，快去抽奖吧。</block>
+		<block wx:if="{{awardsList.length > 0}}">用餐列表：</block>
 	</view>
 
-	<view class="list-container" wx:for="{{awardsList}}" wx:key="unique">
-		<view class="list-item">{{item}}</view>
+	<view class="list-container" wx:for="{{awardsList}}" wx:key="unique" >
+		<view class="list-item">{{item.name}}</view>
+    <button class='list-item-button' bindtap='deleteItem' data-index='{{item.index}}' type='default'>删除</button>
 	</view>
 
 	

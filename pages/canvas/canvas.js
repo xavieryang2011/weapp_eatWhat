@@ -107,7 +107,7 @@ Page({
       ]
     }
     
-    // wx.setStorageSync('awardsConfig', JSON.stringify(awardsConfig))
+     wx.setStorageSync('awardsConfig', app.awardsConfig)
     
 
     // 绘制转盘

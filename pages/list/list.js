@@ -12,15 +12,13 @@ Page({
       url: '../canvas/canvas'
     })
   },
+  deleteItem:function(e){
+    var index = e.currentTarget.dataset.index;
+  },
   onLoad: function () {
     var that = this
-    var list = wx.getStorageSync('winAwards') || {data:[]}
-
-    if (list && list.data && list.data.length > 0) {
-      list = list.data
-    }else {
-      list = []
-    }
+    var list = wx.getStorageSync('awardsConfig').awards
+    console.log('list',list)
 
     //调用应用实例的方法获取全局数据
     app.getUserInfo(function(userInfo){

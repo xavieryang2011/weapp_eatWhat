@@ -1,5 +1,5 @@
 page {
-	padding: 15px;
+	padding: 0px;
 }
 .list-header{
 	display: block;
@@ -18,18 +18,26 @@ page {
 	font-size: 20px;
 }
 .list-container{
-	margin: 10px;
-	padding: 5px 10px;
+	padding: 15px;
 	border: 1px solid #ccc;
 	background-color: #eee;
-	text-align: left;
+	text-align: center;
 	border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  align-items: center;
+  margin: 10rpx;
 }
 .list-item{
-	display: block;
-	padding: 0 0;
+  text-align: center;
+  width: 150px;
 }
-
+.list-item-button{
+  text-align: center;
+  width: 100px;
+  left: 50px
+}
 .list-btn{
 	margin: 1rem 2rem;
 }
