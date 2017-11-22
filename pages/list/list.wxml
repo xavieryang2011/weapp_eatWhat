@@ -1,22 +1,24 @@
 <view class="list-header">
-	<view class="header-pic">
-		<image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-	</view>
+  <view class="header-pic">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
+  </view>
 
-	<view class="list-btn">
-		<button bindtap="gotoLottery" type="primary">去吃饭</button>
-	</view>
+  <view class="list-add">
+    <view class='section'>
+      <input placeholder='点击输入' type='text' bindinput='inputEvent' class='input'></input>
+    </view>
+    <button bindtap="gotoLottery"  type="primary">添加</button>
+  </view>
 
-	<view class="header-name">
-		{{userInfo.nickName}}，
-		<block wx:if="{{awardsList.length > 0}}">用餐列表：</block>
-	</view>
+  <view class="header-name">
+    {{userInfo.nickName}}，
+    <block wx:if="{{awardsList.length > 0}}">用餐列表：</block>
+  </view>
 
-	<view class="list-container" wx:for="{{awardsList}}" wx:key="unique" >
-		<view class="list-item">{{item.name}}</view>
+  <view class="list-container" wx:for="{{awardsList}}" wx:key="unique">
+    <view class="list-item">{{item.name}}</view>
     <button class='list-item-button' bindtap='deleteItem' data-index='{{item.index}}' type='default'>删除</button>
-	</view>
+  </view>
 
-	
+
 </view>
-

@@ -13,13 +13,14 @@ Page({
     })
   },
   getLottery: function () {
+    var awardsConfig = wx.getStorageSync('awardsConfig'),
+    awardLength=awardsConfig.length;
     var that = this
     var awardIndex = Math.random() * awardLength >>> 0;
 
     // 获取奖品配置
-    var awardsConfig = app.awardsConfig,
-      runNum = awardLength+2
-    if (awardIndex < 2) awardsConfig.chance = false
+  
+    var runNum = awardLength+2;
     console.log(awardIndex)
 
     // 初始化 rotate
@@ -52,21 +53,17 @@ Page({
 
      // 记录奖品
     var winAwards = wx.getStorageSync('winAwards') || {data:[]}
-    winAwards.data.push(awardsConfig.awards[awardIndex].name + '1个')
+    winAwards.data.push(awardsConfig[awardIndex].name + '1个')
     wx.setStorageSync('winAwards', winAwards)
 
     // 中奖提示
     setTimeout(function() {
       wx.showModal({
         title: '结果',
-        content:  (awardsConfig.awards[awardIndex].name),
+        content:  (awardsConfig[awardIndex].name),
         showCancel: false
       })
-      if (awardsConfig.chance) {
-        that.setData({
-          btnDisabled: ''
-        })  
-      }
+     
     }, 4000);
     
 
@@ -89,7 +86,7 @@ Page({
       }
     })*/
   },
-  onReady: function (e) {
+  onShow: function (e) {
 
     var that = this;
 
@@ -107,11 +104,13 @@ Page({
       ]
     }
     
-     wx.setStorageSync('awardsConfig', app.awardsConfig)
+    if(wx.getStorageSync('awardsConfig')==""){
+     wx.setStorageSync('awardsConfig', app.awardsConfig.awards)
+    }
     
 
     // 绘制转盘
-    var awardsConfig = app.awardsConfig.awards,
+    var awardsConfig = wx.getStorageSync('awardsConfig'),
         len = awardsConfig.length,
         awardLength=len,
         rotateDeg = 360 / len / 2 + 90,

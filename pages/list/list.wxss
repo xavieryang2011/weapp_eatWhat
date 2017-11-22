@@ -41,3 +41,13 @@ page {
 .list-btn{
 	margin: 1rem 2rem;
 }
+.list-add{
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+}
+.input{
+  background: #ccc;
+  margin: 1rem
+}
+
