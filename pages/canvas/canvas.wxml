@@ -20,5 +20,9 @@
       <view bindtap="getLottery" class="canvas-btn {{btnDisabled}}">开始</view>
     </view>
   </view>
-
+  <view class='list-container'>
+    <view class='list-item' wx:for="{{winList}}" wx:key="unique">
+      <view>{{item}}</view>
+    </view>
+  </view>
 </view>

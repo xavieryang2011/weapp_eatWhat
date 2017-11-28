@@ -5,7 +5,8 @@ Page({
   data: {
     awardsList: {},
     animationData: {},
-    btnDisabled: ''
+    btnDisabled: '',
+    winList:{}
     },
   gotoList: function() {
     wx.redirectTo({
@@ -51,11 +52,6 @@ Page({
       btnDisabled: ''
     })
 
-     // 记录奖品
-    var winAwards = wx.getStorageSync('winAwards') || {data:[]}
-    winAwards.data.push(awardsConfig[awardIndex].name + '1个')
-    wx.setStorageSync('winAwards', winAwards)
-
     // 中奖提示
     setTimeout(function() {
       wx.showModal({
@@ -64,6 +60,17 @@ Page({
         showCancel: false
       })
      
+      // 记录奖品
+      var winAwards = wx.getStorageSync('winAwards') || { data: [] }
+      var curDate = new Date();
+      console.log('data', curDate.toLocaleString())
+      winAwards.data.push(awardsConfig[awardIndex].name +"  "+ curDate.toLocaleString())
+      wx.setStorageSync('winAwards', winAwards)
+
+      that.setData({
+        winList: wx.getStorageSync('winAwards').data.reverse() || { data: [] }
+      })
+      console.log('winlist', wx.getStorageSync('winAwards').data || { data: [] })
     }, 4000);
     
 
@@ -97,7 +104,7 @@ Page({
         { 'index': 0, 'name': '羊汤'},
         {'index': 1, 'name': '冰冰湘'},
         {'index': 2, 'name': '牛舌'},
-        {'index': 3, 'name': '小浣熊'},
+        {'index': 3, 'name': '九毛九'},
         {'index':4,'name':'太度'},
         {'index':5,'name':'食饭'},
         {'index':6,'name':'牛肉汤'}
@@ -108,7 +115,9 @@ Page({
      wx.setStorageSync('awardsConfig', app.awardsConfig.awards)
     }
     
-
+    that.setData({
+      winList: wx.getStorageSync('winAwards').data.reverse() || { data: [] }
+    })
     // 绘制转盘
     var awardsConfig = wx.getStorageSync('awardsConfig'),
         len = awardsConfig.length,

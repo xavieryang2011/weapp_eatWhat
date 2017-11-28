@@ -30,6 +30,10 @@ Page({
   deleteItem:function(e){
     var index = e.currentTarget.dataset.index;
     var list=wx.getStorageSync("awardsConfig");
+    if(index>=list.length) {
+      index=list.length-1;
+    }
+    console.log('index', index);
     list.splice(index,1);
     wx.setStorageSync('awardsConfig', list)
     console.log('list', list)
